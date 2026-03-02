@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Give to Gain: Community Spotlight | Halifax Vol. 1</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #a855f7; /* Vibrant Purple */
@@ -25,7 +25,6 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             min-height: 100vh;
-            /* Prestige abstract AI background */
             background-image: radial-gradient(circle at 20% 0%, rgba(168, 85, 247, 0.15), transparent 40%),
                               radial-gradient(circle at 80% 100%, rgba(245, 158, 11, 0.1), transparent 40%),
                               url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
@@ -88,7 +87,6 @@
             overflow: hidden;
         }
 
-        /* Prestige Gold Top Line */
         .glass-card::before {
             content: '';
             position: absolute;
@@ -106,7 +104,7 @@
 
         .header h1 {
             font-size: 2.8em;
-            margin: 0 0 15px 0;
+            margin: 0 0 10px 0;
             font-weight: 700;
             letter-spacing: -1px;
             background: linear-gradient(to right, #fff, #d8b4fe);
@@ -122,7 +120,56 @@
             max-width: 700px;
         }
 
-        /* Styling for the requirements description */
+        /* Ticker Countdown Styles */
+        .countdown-wrapper {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .countdown-title {
+            font-size: 0.85em;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .countdown-box {
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            padding: 12px 15px;
+            text-align: center;
+            min-width: 65px;
+            box-shadow: inset 0 0 20px rgba(245, 158, 11, 0.05);
+        }
+
+        .countdown-time {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+        }
+
+        .countdown-label {
+            font-size: 0.7em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px;
+        }
+
         .criteria-box {
             background: rgba(245, 158, 11, 0.05);
             border: 1px solid rgba(245, 158, 11, 0.2);
@@ -134,34 +181,15 @@
             line-height: 1.6;
         }
 
-        .criteria-box ul {
-            margin: 15px 0;
-            padding-left: 20px;
-            color: #d4d4d8;
-        }
-
-        .criteria-box li {
-            margin-bottom: 8px;
-        }
-
-        .criteria-box strong {
-            color: var(--accent);
-        }
+        .criteria-box ul { margin: 15px 0; padding-left: 20px; color: #d4d4d8; }
+        .criteria-box li { margin-bottom: 8px; }
+        .criteria-box strong { color: var(--accent); }
 
         form { display: flex; flex-direction: column; gap: 30px; }
         .form-group { display: flex; flex-direction: column; gap: 10px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
-        label.section-label {
-            font-size: 1.05em;
-            font-weight: 600;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 2px;
-        }
-
+        label.section-label { font-size: 1.05em; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 5px; margin-bottom: 2px; }
+        .section-desc { font-size: 0.85em; color: var(--text-muted); margin-top: -8px; margin-bottom: 5px; line-height: 1.4; }
         .required { color: var(--primary); }
 
         input[type="text"], input[type="email"], textarea {
@@ -176,9 +204,7 @@
             transition: all 0.3s ease;
             box-sizing: border-box;
         }
-
         textarea { min-height: 120px; resize: vertical; }
-
         input:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
@@ -186,7 +212,6 @@
             background: rgba(9, 9, 11, 0.8);
         }
 
-        /* Radio & Checkbox Styling */
         .options-grid {
             display: flex;
             flex-direction: column;
@@ -196,29 +221,9 @@
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        .option-label {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            color: var(--text-main);
-            font-weight: 400;
-            cursor: pointer;
-            font-size: 0.95em;
-            transition: color 0.2s;
-            line-height: 1.4;
-        }
-
+        .option-label { display: flex; align-items: flex-start; gap: 12px; color: var(--text-main); font-weight: 400; cursor: pointer; font-size: 0.95em; transition: color 0.2s; line-height: 1.4; }
         .option-label:hover { color: var(--primary); }
-        .option-label input[type="radio"], .option-label input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-            cursor: pointer;
-            margin: 2px 0 0 0;
-            flex-shrink: 0;
-        }
-
+        .option-label input[type="radio"], .option-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; margin: 2px 0 0 0; flex-shrink: 0; }
         .other-field { margin-top: 5px; width: calc(100% - 30px); margin-left: 30px; }
 
         button {
@@ -238,18 +243,16 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
         }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5);
-        }
-
+        button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(168, 85, 247, 0.5); }
         .footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.9em; }
 
         @media (max-width: 600px) {
             .form-row { grid-template-columns: 1fr; }
             .glass-card { padding: 30px 20px; }
             .header h1 { font-size: 2em; }
+            .countdown-container { gap: 8px; }
+            .countdown-box { padding: 8px 10px; min-width: 50px; }
+            .countdown-time { font-size: 1.5em; }
         }
     </style>
 </head>
@@ -268,8 +271,31 @@
         <div class="glass-card">
             
             <div class="header">
-                <h1>W2G: Community Spotlight</h1>
+                <h1>Community Spotlight</h1>
                 <p>Call for Nominations</p>
+                
+                <div class="countdown-wrapper" id="countdown-wrapper">
+                    <div class="countdown-title">Submission Deadline</div>
+                    <div class="countdown-container">
+                        <div class="countdown-box">
+                            <div class="countdown-time" id="cd-days">00</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-time" id="cd-hours">00</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-time" id="cd-minutes">00</div>
+                            <div class="countdown-label">Mins</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-time" id="cd-seconds">00</div>
+                            <div class="countdown-label">Secs</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="criteria-box">
@@ -359,7 +385,7 @@
                     </div>
                 </div>
 
-                <button type="submit">Submit Nomination</button>
+                <button type="submit" id="submit-btn">Submit Nomination</button>
             </form>
         </div>
     </main>
@@ -368,5 +394,34 @@
         <p>&copy; 2026 AI Collective & Women in AI. Built for the community.</p>
     </footer>
 
+    <script>
+        // Set the deadline to Thursday, March 5, 2026 at 11:59:59 PM (AST is UTC-4)
+        const deadlineDate = new Date("March 5, 2026 23:59:59-04:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = deadlineDate - now;
+
+            // Calculate time elements
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display results with leading zeros if needed
+            document.getElementById("cd-days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("cd-hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("cd-minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("cd-seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            // When the countdown is finished, display a message and optionally disable the submit button
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown-wrapper").innerHTML = "<div style='color: #ef4444; font-weight: 700; font-size: 1.2em; padding: 20px; border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; background: rgba(239,68,68,0.1); margin-top: 20px;'>Nominations are now closed. Thank you!</div>";
+                // Optional: document.getElementById("submit-btn").disabled = true;
+                // Optional: document.getElementById("submit-btn").style.opacity = "0.5";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
