@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W2G: Community Spotlight Call For Nominations </title>
+    <title>Give to Gain: Community Spotlight | Halifax Vol. 1</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -25,6 +25,7 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             min-height: 100vh;
+            /* Prestige abstract AI background */
             background-image: radial-gradient(circle at 20% 0%, rgba(168, 85, 247, 0.15), transparent 40%),
                               radial-gradient(circle at 80% 100%, rgba(245, 158, 11, 0.1), transparent 40%),
                               url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
@@ -38,7 +39,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
+            padding: 15px 5%;
             background: rgba(9, 9, 11, 0.6);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -46,16 +47,19 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logos {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logos img {
-            height: 38px;
+            height: 32px;
             object-fit: contain;
         }
 
@@ -67,11 +71,12 @@
             background: linear-gradient(to right, var(--accent), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            white-space: nowrap;
         }
 
         .container {
             max-width: 850px;
-            margin: 60px auto;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
@@ -87,6 +92,7 @@
             overflow: hidden;
         }
 
+        /* Prestige Gold Top Line */
         .glass-card::before {
             content: '';
             position: absolute;
@@ -95,6 +101,16 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, transparent, var(--accent), var(--primary), transparent);
+        }
+
+        /* Event Banner Styling */
+        .event-banner {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .header {
@@ -247,6 +263,8 @@
         .footer { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.9em; }
 
         @media (max-width: 600px) {
+            .navbar { justify-content: center; }
+            .logos { justify-content: center; }
             .form-row { grid-template-columns: 1fr; }
             .glass-card { padding: 30px 20px; }
             .header h1 { font-size: 2em; }
@@ -263,6 +281,8 @@
             <img src="./AIC_Logo-White.svg" alt="AI Collective Logo">
             <img src="./WAI_Logo_White_www.avif" alt="Women in AI Logo">
             <img src="./Dizajn%20bez%20naslova_edited.avif" alt="WiML Logo">
+            <img src="./DS4W-logo-white.png" alt="Digital Skills for Women Logo">
+            <img src="./DNS-Logo-White.png" alt="Digital Nova Scotia Logo">
         </div>
         <div class="hashtag">#GiveToGain</div>
     </nav>
@@ -270,6 +290,8 @@
     <main class="container">
         <div class="glass-card">
             
+            <img src="./1.jpg" alt="Give to Gain: Women Building Their AI Roadmap" class="event-banner">
+
             <div class="header">
                 <h1>W2G: Community Spotlight</h1>
                 <p>Call for Nominations</p>
@@ -295,7 +317,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="criteria-box">
@@ -305,7 +326,7 @@
                 <ul>
                     <li>Have led or significantly contributed to an <strong>AI initiative</strong> (project, product, research, resource, program, or deployment)</li>
                     <li>Be able to explain the <strong>problem, approach, and impact</strong></li>
-                    <li>Be willing to deliver a <strong>5–7 minute spotlight with 3–6 slides</strong> at <em>Give to Gain: IWD 2026 — Halifax</em></li>
+                    <li>Be willing to deliver a <strong>5–7 minute spotlight with 3–6 slides</strong> at <em>Give to Gain: Women Building Their AI Roadmap</em></li>
                 </ul>
                 <em>Note: This is not a promotional pitch. If your initiative is commercial, the focus must be on what you gave and what others gained.</em>
             </div>
@@ -395,31 +416,25 @@
     </footer>
 
     <script>
-        // Set the deadline to Thursday, March 5, 2026 at 11:59:59 PM (AST is UTC-4)
         const deadlineDate = new Date("March 18, 2026 23:59:59-04:00").getTime();
 
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = deadlineDate - now;
 
-            // Calculate time elements
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Display results with leading zeros if needed
             document.getElementById("cd-days").innerHTML = days < 10 ? "0" + days : days;
             document.getElementById("cd-hours").innerHTML = hours < 10 ? "0" + hours : hours;
             document.getElementById("cd-minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("cd-seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
 
-            // When the countdown is finished, display a message and optionally disable the submit button
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("countdown-wrapper").innerHTML = "<div style='color: #ef4444; font-weight: 700; font-size: 1.2em; padding: 20px; border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; background: rgba(239,68,68,0.1); margin-top: 20px;'>Nominations are now closed. Thank you!</div>";
-                // Optional: document.getElementById("submit-btn").disabled = true;
-                // Optional: document.getElementById("submit-btn").style.opacity = "0.5";
             }
         }, 1000);
     </script>
