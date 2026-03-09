@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>W2G: The Big Book of Prompts | Halifax Vol. 1</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #8b5cf6;
             --primary-glow: rgba(139, 92, 246, 0.5);
             --secondary: #3b82f6;
+            --accent: #f59e0b; /* Prestige Gold */
             --bg-dark: #0f172a;
-            --surface: rgba(30, 41, 59, 0.7);
+            --surface: rgba(30, 41, 59, 0.75);
             --surface-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -24,52 +25,58 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             min-height: 100vh;
-            background-image: radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.15), transparent 25%),
-                              radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.15), transparent 25%),
-                              url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            /* Event banner set as background with a dark overlay for readability */
+            background-image: radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.2), transparent 40%),
+                              radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.2), transparent 40%),
+                              linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.95)),
+                              url('./1.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-blend-mode: overlay;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            padding: 15px 5%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--surface-border);
             position: sticky;
             top: 0;
             z-index: 100;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logos {
             display: flex;
             gap: 20px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logos img {
-            height: 40px;
+            height: 32px;
             object-fit: contain;
         }
 
         .hashtag {
             font-weight: 600;
             font-size: 0.9em;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            white-space: nowrap;
         }
 
         .container {
             max-width: 800px;
-            margin: 60px auto;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
@@ -117,6 +124,56 @@
         .highlight-text {
             color: var(--text-main);
             font-weight: 500;
+        }
+
+        /* Ticker Countdown Styles */
+        .countdown-wrapper {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .countdown-title {
+            font-size: 0.85em;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .countdown-box {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            padding: 12px 15px;
+            text-align: center;
+            min-width: 65px;
+            box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.05);
+        }
+
+        .countdown-time {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+        }
+
+        .countdown-label {
+            font-size: 0.7em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 6px;
         }
 
         form {
@@ -252,6 +309,8 @@
         }
 
         @media (max-width: 600px) {
+            .navbar { justify-content: center; }
+            .logos { justify-content: center; }
             .form-row, .checkbox-grid {
                 grid-template-columns: 1fr;
             }
@@ -261,6 +320,9 @@
             .header h1 {
                 font-size: 2em;
             }
+            .countdown-container { gap: 8px; }
+            .countdown-box { padding: 8px 10px; min-width: 50px; }
+            .countdown-time { font-size: 1.5em; }
         }
     </style>
 </head>
@@ -271,17 +333,41 @@
             <img src="./AIC_Logo-White.svg" alt="AI Collective Logo">
             <img src="./WAI_Logo_White_www.avif" alt="Women in AI Logo">
             <img src="./Dizajn%20bez%20naslova_edited.avif" alt="WiML Logo">
+            <img src="./DS4W-logo-white.png" alt="Digital Skills for Women Logo">
+            <img src="./DNS-Logo-White.png" alt="Digital Nova Scotia Logo">
         </div>
         <div class="hashtag">#GiveToGain</div>
     </nav>
 
     <main class="container">
         <div class="glass-card">
-
+            
             <div class="header">
                 <h1>W2G: Big Book of Prompts</h1>
                 <p>In the spirit of our Give to Gain campaign, share your most powerful prompt to gain the <span class="highlight-text">Big Book of Prompts</span> and learn from other community members' experience.</p>
-                <p style="margin-top: 10px; font-size: 0.95em;">The Book will be sent via email after the event. Top prompts will be selected for presentation at the mixer!</p>
+                <p style="margin-top: 10px; font-size: 0.95em;">The Book will be sent via email after <strong>Give to Gain: Women Building Their AI Roadmap</strong>. Top prompts will be selected for presentation at the event!</p>
+                
+                <div class="countdown-wrapper" id="countdown-wrapper">
+                    <div class="countdown-title">Submission Deadline</div>
+                    <div class="countdown-container">
+                        <div class="countdown-box">
+                            <div class="countdown-time" id="cd-days">00</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-time" id="cd-hours">00</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-time" id="cd-minutes">00</div>
+                            <div class="countdown-label">Mins</div>
+                        </div>
+                        <div class="countdown-box">
+                            <div class="countdown-time" id="cd-seconds">00</div>
+                            <div class="countdown-label">Secs</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSdvqkqGcDWUtTBqhFyxZ5iE0aeUcpPwSsZM5M3N4mOrfhyjhA/formResponse" method="POST">
@@ -332,7 +418,7 @@
                     <input type="text" class="other-field" name="entry.1000935824.other_option_response" placeholder="If Other, please specify..." aria-label="Other Tool">
                 </div>
 
-                <button type="submit">Submit to the Book</button>
+                <button type="submit" id="submit-btn">Submit to the Book</button>
             </form>
         </div>
     </main>
@@ -341,5 +427,28 @@
         <p>&copy; 2026 AI Collective & Women in AI. Built for the community.</p>
     </footer>
 
+    <script>
+        const deadlineDate = new Date("March 24, 2026 23:59:59-04:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = deadlineDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("cd-days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("cd-hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("cd-minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("cd-seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown-wrapper").innerHTML = "<div style='color: #ef4444; font-weight: 700; font-size: 1.2em; padding: 20px; border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; background: rgba(239,68,68,0.1); margin-top: 20px;'>Submissions are now closed. Thank you!</div>";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
